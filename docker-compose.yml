@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx.Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_NAME: crm_stages
+      DB_USER: crm
+      DB_PASS: crm_secret
+
+  mysql:
+    build:
+      context: .
+      dockerfile: docker/mysql.Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: root_secret
+      MYSQL_DATABASE: crm_stages
+      MYSQL_USER: crm
+      MYSQL_PASSWORD: crm_secret
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

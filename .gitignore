@@ -1,0 +1,21 @@
+# Зависимости
+/vendor/
+composer.phar
+
+# Локальная база данных
+/data/
+
+# PHPUnit cache
+/.phpunit.cache/
+
+# Docker volumes
+mysql_data/
+
+# Настройки окружения
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

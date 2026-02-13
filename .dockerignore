@@ -1,0 +1,22 @@
+# Зависимости (устанавливаются внутри контейнера)
+vendor/
+composer.phar
+
+# Локальная БД
+data/
+*.sqlite
+
+# Системные файлы
+.git/
+.gitignore
+.dockerignore
+
+# IDE
+.idea/
+.vscode/
+.cursor/
+*.swp
+*.swo
+
+# Документация
+README.md
